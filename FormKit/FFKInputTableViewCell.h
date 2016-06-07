@@ -15,6 +15,7 @@
 @interface FFKInputTableViewCell : FFKSubtitleTableViewCell
 
 @property (nonatomic, strong) FFKInput *input;
+@property (readonly, strong) UILabel *accessoryLabel;
 
 - (void)focus;
 - (void)defocus;

@@ -31,6 +31,7 @@
     view.textLabel.text = self.titleText;
     view.detailTextLabel.text = self.detailText;
     view.imageView.image = self.image;
+    view.accessoryLabel.text = self.accessoryText;
     
     if (self.validatorError) {
         [view setValidatorErrorStyleEnabled:YES];

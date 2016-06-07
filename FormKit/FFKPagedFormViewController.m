@@ -46,6 +46,7 @@
     [super viewDidLoad];
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+//    self.tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
     [self.view addSubview:self.tableView];
     
     _tableController = [[FFKTableController alloc] initWithTableView:self.tableView];
@@ -69,7 +70,7 @@
     __weak typeof(self) weakSelf = self;
     [self.tableController setTableViewDidScrollHandler:^(UITableView *tableView, CGPoint offset) {
         
-        CGFloat alpha =  (offset.y / self.fauxNavigationBar.frame.size.height) + 1;
+        CGFloat alpha =  (offset.y / (self.fauxNavigationBar.frame.size.height)) + 1;
         weakSelf.fauxNavigationBar.alpha = alpha;
     }];
     
@@ -161,6 +162,8 @@
                     }
                 }
                 
+                [self.tableView deselectRowAtIndexPath:interaction.indexPath animated:YES];
+                
                 // If the detail button is pressed, it has a validation warnng...
                 if (interaction.type == FFKTableInteractionTypeSecondary) {
                     
@@ -193,7 +196,6 @@
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:inputIndexPath];
     [cell focus];
     
-    [self.tableView deselectRowAtIndexPath:inputIndexPath animated:YES];
     [self.tableView scrollToRowAtIndexPath:inputIndexPath atScrollPosition:UITableViewScrollPositionNone animated:animated];
 
     // If the previous input was a text field, but we don't require keyboard anymore, dismiss it
@@ -221,8 +223,6 @@
     } else {
         [cell check];
     }
-    
-    [self.tableView deselectRowAtIndexPath:inputIndexPath animated:YES];
 }
 
 - (FFKInput *)nextInput
@@ -261,11 +261,11 @@
     if (performingTask) {
         self.tableView.userInteractionEnabled = NO;
         [self.advancementBarButtonItem startActivityAnimating];
-        [self.advancementLongBarButtonItem startActivityAnimating];
+        [self.advancementLongBarButtonItem setEnabled:NO];
     } else {
         self.tableView.userInteractionEnabled = YES;
-        [self.advancementLongBarButtonItem stopActivityAnimating];
-        [self.advancementLongBarButtonItem stopActivityAnimating];
+        [self.advancementBarButtonItem stopActivityAnimating];
+        [self.advancementLongBarButtonItem setEnabled:YES];
     }
     
     [self didChangeValueForKey:@"performingTask"];

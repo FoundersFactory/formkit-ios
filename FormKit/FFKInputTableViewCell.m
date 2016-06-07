@@ -11,9 +11,23 @@
 
 @implementation FFKInputTableViewCell
 
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        
+        _accessoryLabel = [UILabel new];
+        self.accessoryLabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview:self.accessoryLabel];
+    }
+    
+    return self;
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    self.accessoryLabel.frame = CGRectMake(85, 0, self.bounds.size.width - 100, self.bounds.size.height);
 }
 
 - (void)setValidatorErrorStyleEnabled:(BOOL)enabled
@@ -29,12 +43,12 @@
 
 - (void)focus
 {
-    
+    // Subclass me
 }
 
 - (void)defocus
 {
-    
+    // Subclass me
 }
 
 - (void)check
