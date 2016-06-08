@@ -46,7 +46,7 @@
     [super viewDidLoad];
     
     _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-//    self.tableView.contentInset = UIEdgeInsetsMake(-44, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(-34, 0, 0, 0);
     [self.view addSubview:self.tableView];
     
     _tableController = [[FFKTableController alloc] initWithTableView:self.tableView];
@@ -68,7 +68,7 @@
     __weak typeof(self) weakSelf = self;
     [self.tableController setTableViewDidScrollHandler:^(UITableView *tableView, CGPoint offset) {
         
-        CGFloat alpha =  (offset.y / (self.fauxNavigationBar.frame.size.height)) + 1;
+        CGFloat alpha = ((offset.y - weakSelf.tableView.contentInset.top) / (self.fauxNavigationBar.frame.size.height)) + 1;
         weakSelf.fauxNavigationBar.alpha = alpha;
     }];
     
@@ -79,8 +79,11 @@
 {
     [super viewDidAppear:animated];
     
-    FFKInput *firstInput = [self.fieldset.inputs firstObject];
-    [self focusInput:firstInput animated:animated];
+    if (self.focusInputOnViewDidAppear) {
+        
+        FFKInput *firstInput = [self.fieldset.inputs firstObject];
+        [self focusInput:firstInput animated:animated];
+    }
 }
 
 - (void)viewWillLayoutSubviews
@@ -193,7 +196,7 @@
     NSIndexPath *inputIndexPath = [NSIndexPath indexPathForRow:[self.fieldset.inputs indexOfObject:input] inSection:1];
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:inputIndexPath];
     [cell focus];
-    [self.tableView scrollToRowAtIndexPath:inputIndexPath atScrollPosition:UITableViewScrollPositionNone animated:animated];
+    [self.tableView scrollToRowAtIndexPath:inputIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
 
     /*
 
@@ -282,7 +285,7 @@
     
     // If validation issues, don't proceed
     if (self.fieldset.inputsContainValidatorErrors) {
-        return ;
+        return;
     }
 
     // If we have custom handler on the fieldset, use that
@@ -296,6 +299,7 @@
             self.performingTask = NO;
             
             FFKPagedFormViewController *viewController = [[FFKPagedFormViewController alloc] initWithForm:self.form fieldset:fieldset];
+            viewController.focusInputOnViewDidAppear = self.focusInputOnViewDidAppear;
             [self.navigationController pushViewController:viewController animated:YES];
         };
         

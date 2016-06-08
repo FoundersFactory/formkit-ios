@@ -21,6 +21,7 @@
 @property (readonly, strong) FFKFieldset *fieldset;
 @property (nonatomic, assign, getter=isPerformingTask) BOOL performingTask;
 @property (readonly, strong) FFKInput *focusedInput;
+@property (nonatomic, assign) BOOL focusInputOnViewDidAppear;
 
 - (instancetype)initWithForm:(FFKForm *)form fieldset:(FFKFieldset *)fieldset;
 
