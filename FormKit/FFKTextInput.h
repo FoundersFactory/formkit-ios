@@ -8,8 +8,9 @@
 
 #import "FFKInput.h"
 
-@class FFKAutocompleter;
+@class FFKTextAutocompleter;
 @class FFKValidator;
+@protocol FFKTextAutocompleterProtocol;
 
 /**
  Allows input for text or numbers.
@@ -35,7 +36,7 @@
 /**
  The autocompleter. Displays suggestions below the input.
  */
-@property (nonatomic, strong) FFKAutocompleter *autocompleter;
+@property (nonatomic, strong) id <FFKTextAutocompleterProtocol> textAutocompleter;
 
 + (instancetype)textInputWithConfigurationHandler:(void(^)(FFKTextInput *input))handler;
 

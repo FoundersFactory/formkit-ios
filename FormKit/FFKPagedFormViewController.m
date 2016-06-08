@@ -182,7 +182,56 @@
         section.rows = inputRows;
     }];
     
-    self.tableController.tableSections = @[headerSection, inputSection];
+    
+    
+    
+    
+    
+    
+    
+
+
+    NSMutableArray *sections = [NSMutableArray new];
+    
+    [sections addObject:headerSection];
+    [sections addObject:inputSection];
+
+    if ([fieldset.inputs.firstObject isKindOfClass:[FFKTextInput class]]) {
+        
+        // Hacky for now, but let's assume we can only have one autocompleter on a page
+        FFKTextInput *textInput = (FFKTextInput *)[fieldset.inputs firstObject];
+        
+        if (textInput.textAutocompleter) {
+            
+            // Create a section to present results
+            FFKTableSection *autocompleterSection = [FFKTableSection new];
+            
+            // Subscribe to any changes on the input
+            [textInput setValueDidChangeHandler:^(FFKTextInput *input, id value) {
+                
+                // Ask for results for input string
+                [input.textAutocompleter resultsForString:value withCompletion:^(NSArray *rows) {
+                    
+                    for (FFKTableRow *row in rows) {
+                        [row setInteractionHandler:^(FFKTableInteraction *interaction) {
+
+                            NSLog(@"MAKE SELECTION!");
+                        }];
+                    }
+                 
+                    autocompleterSection.rows = rows;
+                    
+                    // Reload and adjust
+                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                }];
+            }];
+            
+            [sections addObject:autocompleterSection];
+        }
+    }
+    
+    self.tableController.tableSections = sections;
     
     [self.tableView reloadData];
 }

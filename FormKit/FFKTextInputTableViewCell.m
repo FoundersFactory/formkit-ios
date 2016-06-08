@@ -11,6 +11,8 @@
 
 @implementation FFKTextInputTableViewCell
 
+@dynamic input;
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -79,6 +81,15 @@
     }
     
     self.input.value = sender.text;
+    
+//    if ([self.input isKindOfClass:[FFKTextInput class]]) {
+//        
+//        FFKTextInput *textInput = (FFKTextInput *)self.input;
+//        if (textInput.textAutocompleter) {
+//            
+//        }
+//    }
+    
 }
 
 @end
