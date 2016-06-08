@@ -32,10 +32,19 @@
 
 - (void)layoutSubviews
 {
-    if (self.accessoryType == UITableViewCellAccessoryDetailButton) {
-        self.textField.frame = CGRectMake(150 - 15 - 30, 0, self.bounds.size.width - 150, self.bounds.size.height);
+    CGFloat offsetX = 150;
+
+    if (!self.textLabel.text) {
+        offsetX = 30;
+        self.textField.textAlignment = NSTextAlignmentLeft;
     } else {
-        self.textField.frame = CGRectMake(150 - 15, 0, self.bounds.size.width - 150, self.bounds.size.height);
+        self.textField.textAlignment = NSTextAlignmentRight;
+    }
+    
+    if (self.accessoryType == UITableViewCellAccessoryDetailButton) {
+        self.textField.frame = CGRectMake(offsetX - 15 - 30, 0, self.bounds.size.width - offsetX, self.bounds.size.height);
+    } else {
+        self.textField.frame = CGRectMake(offsetX - 15, 0, self.bounds.size.width - offsetX, self.bounds.size.height);
     }
     
     [super layoutSubviews];

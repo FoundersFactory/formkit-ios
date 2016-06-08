@@ -180,6 +180,7 @@
     FFKTableSection *inputSection = [FFKTableSection tableSectionWithConfigurationHandler:^(FFKTableSection *section) {
         section.headerText = fieldset.hintText;
         section.rows = inputRows;
+        section.footerHeight = 0.1;
     }];
     
     
@@ -205,6 +206,7 @@
             
             // Create a section to present results
             FFKTableSection *autocompleterSection = [FFKTableSection new];
+            autocompleterSection.headerHeight = 0.1;
             
             // Subscribe to any changes on the input
             [textInput setValueDidChangeHandler:^(FFKTextInput *input, id value) {
@@ -223,7 +225,7 @@
                     
                     // Reload and adjust
                     [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
                 }];
             }];
             
@@ -242,10 +244,9 @@
         return;
     }
     
-    NSIndexPath *inputIndexPath = [NSIndexPath indexPathForRow:[self.fieldset.inputs indexOfObject:input] inSection:1];
-    FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:inputIndexPath];
+    FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:input.row.indexPath];
     [cell focus];
-    [self.tableView scrollToRowAtIndexPath:inputIndexPath atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
+    [self.tableView scrollToRowAtIndexPath:input.row.indexPath atScrollPosition:UITableViewScrollPositionMiddle animated:animated];
 
     /*
 
@@ -264,7 +265,7 @@
 
 - (void)checkInput:(FFKInput *)input animated:(BOOL)animated
 {
-    NSIndexPath *inputIndexPath = [NSIndexPath indexPathForRow:[self.fieldset.inputs indexOfObject:input] inSection:1];
+    NSIndexPath *inputIndexPath = input.row.indexPath;
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:inputIndexPath];
     
     if ([input.value isEqualToNumber:@(1)]) {
