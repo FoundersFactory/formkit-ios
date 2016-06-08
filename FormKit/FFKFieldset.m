@@ -22,6 +22,7 @@
 - (BOOL)inputsContainValidatorErrors
 {
     for (FFKInput *input in self.inputs) {
+        [input validate];
         if (input.validatorError) {
             return YES;
         }

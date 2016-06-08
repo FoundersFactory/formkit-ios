@@ -24,15 +24,4 @@
     return input;
 }
 
-- (void)configureView:(FFKTextInputTableViewCell *)view
-{
-    [super configureView:view];
-    
-    view.textField.placeholder = self.placeholderText;
-    view.textField.text = self.value;
-    view.textField.keyboardType = self.keyboardType;
-    view.textField.autocorrectionType = self.autocorrectionType;
-    view.textField.autocapitalizationType = self.autocapitalizationType;
-}
-
 @end

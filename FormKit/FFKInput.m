@@ -25,29 +25,6 @@
     return input;
 }
 
-- (void)configureView:(FFKInputTableViewCell *)view
-{
-    view.input = self;
-    view.textLabel.text = self.titleText;
-    view.detailTextLabel.text = self.detailText;
-    view.imageView.image = self.image;
-    view.accessoryLabel.text = self.accessoryText;
-    
-    if (self.validatorError) {
-        [view setValidatorErrorStyleEnabled:YES];
-    } else {
-        [view setValidatorErrorStyleEnabled:NO];
-    }
-    
-    if (self.isCheckable) {
-        if ([self.value isEqualToNumber:@(1)]) {
-            [view check];
-        } else {
-            [view uncheck];
-        }
-    }
-}
-
 - (void)validate
 {
     FFKValidator *validator = self.validator;

@@ -39,6 +39,18 @@
     [super layoutSubviews];
 }
 
+- (void)setInput:(FFKTextInput *)input
+{
+    [super setInput:input];
+    
+    self.textField.placeholder = input.placeholderText;
+    self.textField.text = input.value;
+    self.textField.keyboardType = input.keyboardType;
+    self.textField.autocorrectionType = input.autocorrectionType;
+    self.textField.autocapitalizationType = input.autocapitalizationType;
+}
+
+
 - (void)focus
 {
     // We disable interaction so the cell captures the interaction instead (then we can focus on the cell, etc)
@@ -49,12 +61,13 @@
 - (void)defocus
 {
     [self.textField resignFirstResponder];
+    self.textField.userInteractionEnabled = NO;
+    self.input.value = self.textField.text;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
-    self.textField.userInteractionEnabled = NO;
-    self.input.value = textField.text;
+    [self defocus];
 }
 
 - (void)handleTextFieldDidChange:(UITextField *)sender
@@ -64,6 +77,8 @@
     if (formatter) {
         self.textField.text = formatter.formatHandler(formatter, sender.text);
     }
+    
+    self.input.value = sender.text;
 }
 
 @end

@@ -77,9 +77,9 @@
 /**
  Configure the view of the input. Subclass this.
  */
-- (void)configureView:(FFKInputTableViewCell *)view;
+//- (void)configureView:(FFKInputTableViewCell *)view;
 
 + (instancetype)inputWithConfigurationHandler:(void (^)(FFKInput *input))handler;
-
+- (void)validate;
 
 @end

@@ -61,9 +61,7 @@
     self.toolbarItems = @[spaceItem, self.advancementLongBarButtonItem, spaceItem];
     
     [self applyStyles];
-    
-    [self.navigationController startAdjustingFrameToKeyboard];
-    
+        
     _fauxNavigationBar = [_FFKPagedFormFauxNavigationBar new];
     [self.view addSubview:self.fauxNavigationBar];
     
@@ -144,7 +142,7 @@
             }
     
             [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
-                [input configureView:cell];
+                cell.input = input;
                 cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
             }];
             
@@ -152,7 +150,7 @@
 
                 // Whole cell tapped
                 if (interaction.type == FFKTableInteractionTypePrimary) {
-                    
+
                     if (input.isFocusable) {
                         [self focusInput:input animated:YES];
                     }
@@ -195,22 +193,21 @@
     NSIndexPath *inputIndexPath = [NSIndexPath indexPathForRow:[self.fieldset.inputs indexOfObject:input] inSection:1];
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:inputIndexPath];
     [cell focus];
-    
     [self.tableView scrollToRowAtIndexPath:inputIndexPath atScrollPosition:UITableViewScrollPositionNone animated:animated];
 
+    /*
+
     // If the previous input was a text field, but we don't require keyboard anymore, dismiss it
-    if ([self.focusedInput isKindOfClass:[FFKTextInput class]]) {
+    if ([self.focusedInput isKindOfClass:[FFKTextInput class]] && ![self.focusedInput isEqual:input]) {
         
         NSIndexPath *previousInputIndexPath = [NSIndexPath indexPathForRow:[self.fieldset.inputs indexOfObject:self.focusedInput] inSection:1];
         FFKTextInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:previousInputIndexPath];
         [cell defocus];
     }
-    
+    */
     [self willChangeValueForKey:@"focusedInput"];
     _focusedInput = input;
     [self didChangeValueForKey:@"focusedInput"];
-    
-    [self.tableController reloadDirtyRowsWithAnimation:UITableViewRowAnimationAutomatic];
 }
 
 - (void)checkInput:(FFKInput *)input animated:(BOOL)animated
@@ -280,9 +277,12 @@
         return [self focusInput:[self nextFocusableInput] animated:YES];
     }
     
-    // Check for validation issues
+    self.focusedInput.row.dirty = YES;
+    [self.tableController reloadDirtyRowsWithAnimation:UITableViewRowAnimationAutomatic];
+    
+    // If validation issues, don't proceed
     if (self.fieldset.inputsContainValidatorErrors) {
-        return [self presentValidatorErrors];
+        return ;
     }
 
     // If we have custom handler on the fieldset, use that
@@ -319,11 +319,6 @@
         }
         
     }
-}
-
-- (void)presentValidatorErrors
-{
-    [self.tableController reloadDirtyRowsWithAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - Keyboard
