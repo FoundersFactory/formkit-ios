@@ -36,7 +36,7 @@
 /**
  The autocompleter. Displays suggestions below the input.
  */
-@property (nonatomic, strong) id <FFKTextAutocompleterProtocol> textAutocompleter;
+@property (nonatomic, strong) FFKTextAutocompleter *textAutocompleter;
 
 + (instancetype)textInputWithConfigurationHandler:(void(^)(FFKTextInput *input))handler;
 

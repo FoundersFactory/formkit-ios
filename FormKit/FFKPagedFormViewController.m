@@ -111,25 +111,9 @@
 
 #pragma mark - Form methods
 
-- (void)presentFieldset:(FFKFieldset *)fieldset
+- (NSArray <FFKTableRow *> *)rowsWithInputs:(NSArray <FFKInput *> *)inputs
 {
-    _fieldset = fieldset;
-    
-    FFKTableRow *headerRow = [FFKTableRow tableRowWithConfigurationHandler:^(FFKTableRow *row) {
-        row.text = fieldset.titleText;
-        row.detailText = fieldset.detailText;
-        row.cellClass = [FFKFeatureTableViewCell class];
-        row.image = fieldset.image;
-        [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
-            cell.seperatorsHidden = YES;
-        }];
-    }];
-    
-    FFKTableSection *headerSection = [FFKTableSection tableSectionWithConfigurationHandler:^(FFKTableSection *section) {
-        section.rows = @[headerRow];
-    }];
-    
-    NSArray *inputRows = [fieldset.inputs mapObjectsUsingBlock:^id(FFKInput *input, NSInteger idx) {
+    return [inputs mapObjectsUsingBlock:^id(FFKInput *input, NSInteger idx) {
         return [FFKTableRow tableRowWithConfigurationHandler:^(FFKTableRow *row) {
             
             row.cellClass = input.viewCellClass;
@@ -143,17 +127,16 @@
             } else {
                 row.height = 60;
             }
-    
+            
             [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
                 cell.input = input;
                 cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
             }];
             
             [row setInteractionHandler:^(FFKTableInteraction *interaction) {
-
+                
                 // Whole cell tapped
                 if (interaction.type == FFKTableInteractionTypePrimary) {
-
                     if (input.isFocusable) {
                         [self focusInput:input animated:YES];
                     }
@@ -176,15 +159,31 @@
             }];
         }];
     }];
+}
+
+- (void)presentFieldset:(FFKFieldset *)fieldset
+{
+    _fieldset = fieldset;
+    
+    FFKTableRow *headerRow = [FFKTableRow tableRowWithConfigurationHandler:^(FFKTableRow *row) {
+        row.text = fieldset.titleText;
+        row.detailText = fieldset.detailText;
+        row.cellClass = [FFKFeatureTableViewCell class];
+        row.image = fieldset.image;
+        [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
+            cell.seperatorsHidden = YES;
+        }];
+    }];
+    
+    FFKTableSection *headerSection = [FFKTableSection tableSectionWithConfigurationHandler:^(FFKTableSection *section) {
+        section.rows = @[headerRow];
+    }];
     
     FFKTableSection *inputSection = [FFKTableSection tableSectionWithConfigurationHandler:^(FFKTableSection *section) {
         section.headerText = fieldset.hintText;
-        section.rows = inputRows;
-        section.footerHeight = 0.1;
+        section.rows = [self rowsWithInputs:fieldset.inputs];
+        section.footerHeight = 2.5;
     }];
-    
-    
-    
     
     
     
@@ -206,27 +205,37 @@
             
             // Create a section to present results
             FFKTableSection *autocompleterSection = [FFKTableSection new];
-            autocompleterSection.headerHeight = 0.1;
+            autocompleterSection.headerHeight = 2.5;
             
-            // Subscribe to any changes on the input
-            [textInput setValueDidChangeHandler:^(FFKTextInput *input, id value) {
+            [textInput.textAutocompleter setResultsHandler:^(FFKTextAutocompleter *autocompleter, NSArray<FFKInput *> *suggestedInputs) {
                 
-                // Ask for results for input string
-                [input.textAutocompleter resultsForString:value withCompletion:^(NSArray *rows) {
-                    
-                    for (FFKTableRow *row in rows) {
-                        [row setInteractionHandler:^(FFKTableInteraction *interaction) {
+                autocompleterSection.rows = [self rowsWithInputs:suggestedInputs];
 
-                            NSLog(@"MAKE SELECTION!");
-                        }];
-                    }
-                 
-                    autocompleterSection.rows = rows;
+                
+                for (FFKTableRow *row in autocompleterSection.rows) {
                     
-                    // Reload and adjust
-                    [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-                    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionMiddle animated:YES];
-                }];
+                    [row setInteractionHandler:^(FFKTableInteraction *interaction) {
+                    
+                        // Set value to selection
+                        FFKInput *selectedInput = interaction.row.context;
+                        textInput.value = selectedInput.value;
+                        [self.tableView reloadRowsAtIndexPaths:@[textInput.row.indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+                        
+                        // Clear out suggestions
+                        autocompleterSection.rows = nil;
+                        
+                        FFKInput *additionalInput = [autocompleter additionalInputForSelectedInput:selectedInput];
+                        
+                        if (additionalInput) {
+                            autocompleterSection.rows = [self rowsWithInputs:@[additionalInput]];
+                        }
+                        
+                        [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+                    }];
+                }
+                
+                [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
             }];
             
             [sections addObject:autocompleterSection];
@@ -243,6 +252,8 @@
     if (!self.fieldset) {
         return;
     }
+    
+    NSLog(@"Focus input %@", input);
     
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:input.row.indexPath];
     [cell focus];

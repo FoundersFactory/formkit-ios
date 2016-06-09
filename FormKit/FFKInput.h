@@ -74,7 +74,6 @@
 
 @property (nonatomic, weak) FFKTableRow *row;
 
-@property (nonatomic, strong) void (^valueDidChangeHandler)(id input, id value);
 
 /**
  Configure the view of the input. Subclass this.

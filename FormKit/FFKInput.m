@@ -48,10 +48,6 @@
     _value = value;
     [self validate];
     [self didChangeValueForKey:@"value"];
-    
-    if (self.valueDidChangeHandler) {
-        self.valueDidChangeHandler(self, value);
-    }
 }
 
 @end

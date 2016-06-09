@@ -9,6 +9,12 @@
 #import "FFKTextInputTableViewCell.h"
 #import "FormKit.h"
 
+@interface FFKTextInputTableViewCell ()
+
+@property (nonatomic, strong) NSTimer *typingTimer;
+
+@end
+
 @implementation FFKTextInputTableViewCell
 
 @dynamic input;
@@ -59,6 +65,8 @@
     self.textField.keyboardType = input.keyboardType;
     self.textField.autocorrectionType = input.autocorrectionType;
     self.textField.autocapitalizationType = input.autocapitalizationType;
+    
+    NSLog(@"Configuring cell with input: %@ %@", input, input.value);
 }
 
 
@@ -73,7 +81,7 @@
 {
     [self.textField resignFirstResponder];
     self.textField.userInteractionEnabled = NO;
-    self.input.value = self.textField.text;
+//    self.input.value = self.textField.text;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -83,22 +91,37 @@
 
 - (void)handleTextFieldDidChange:(UITextField *)sender
 {
-    FFKFormatter *formatter = self.input.formatter;
-    
-    if (formatter) {
-        self.textField.text = formatter.formatHandler(formatter, sender.text);
-    }
-    
+    FFKTextInput *textInput = (FFKTextInput *)self.input;
+    FFKFormatter *formatter = textInput.formatter;
+    FFKTextAutocompleter *textAutocompleter = textInput.textAutocompleter;
+
     self.input.value = sender.text;
     
-//    if ([self.input isKindOfClass:[FFKTextInput class]]) {
-//        
-//        FFKTextInput *textInput = (FFKTextInput *)self.input;
-//        if (textInput.textAutocompleter) {
-//            
-//        }
-//    }
+    if (formatter) {
+        sender.text = formatter.formatHandler(formatter, sender.text);
+    }
     
+    if (textAutocompleter) {
+        
+        if (textAutocompleter.deferCompletingUntillTypingHasFinished) {
+            
+            if (self.typingTimer) {
+                [self.typingTimer invalidate];
+            }
+            
+            self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(handleTypingTimer:) userInfo:nil repeats:NO];
+            
+        } else {
+            textAutocompleter.string = sender.text;
+        }
+    }
+}
+
+- (void)handleTypingTimer:(NSTimer *)sender
+{
+    FFKTextInput *textInput = (FFKTextInput *)self.input;
+    FFKTextAutocompleter *textAutocompleter = textInput.textAutocompleter;
+    textAutocompleter.string = self.textField.text;
 }
 
 @end

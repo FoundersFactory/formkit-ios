@@ -36,7 +36,6 @@
 		13B35DF91D06E081005C78A5 /* FFKValidatorError.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B35DF11D06E081005C78A5 /* FFKValidatorError.m */; };
 		13B35DFA1D06E081005C78A5 /* FFKFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B35DF21D06E081005C78A5 /* FFKFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13B35DFB1D06E081005C78A5 /* FFKFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B35DF31D06E081005C78A5 /* FFKFormatter.m */; };
-		13B35DFC1D06E081005C78A5 /* FFKTextAutocompleterProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B35DF41D06E081005C78A5 /* FFKTextAutocompleterProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13B35E041D06E091005C78A5 /* FFKBarButtonItem.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B35DFE1D06E091005C78A5 /* FFKBarButtonItem.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13B35E051D06E091005C78A5 /* FFKBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B35DFF1D06E091005C78A5 /* FFKBarButtonItem.m */; };
 		13B35E061D06E091005C78A5 /* NSTimer+FFKUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B35E001D06E091005C78A5 /* NSTimer+FFKUtils.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,8 +43,10 @@
 		13B35E081D06E091005C78A5 /* UINavigationController+Keyboard.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B35E021D06E091005C78A5 /* UINavigationController+Keyboard.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13B35E091D06E091005C78A5 /* UINavigationController+Keyboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B35E031D06E091005C78A5 /* UINavigationController+Keyboard.m */; };
 		13B35E681D06E6F0005C78A5 /* TableKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13B35E651D06E6E8005C78A5 /* TableKit.framework */; };
-		13F04F681D08592300063EB3 /* FFKFuzzyMatchAutocompleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 13F04F661D08592300063EB3 /* FFKFuzzyMatchAutocompleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		13F04F691D08592300063EB3 /* FFKFuzzyMatchAutocompleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F04F671D08592300063EB3 /* FFKFuzzyMatchAutocompleter.m */; };
+		13F04F711D08A25D00063EB3 /* FFKTextAutocompleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 13F04F6F1D08A25D00063EB3 /* FFKTextAutocompleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13F04F721D08A25D00063EB3 /* FFKTextAutocompleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F04F701D08A25D00063EB3 /* FFKTextAutocompleter.m */; };
+		13F04F771D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 13F04F751D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		13F04F781D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F04F761D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +106,6 @@
 		13B35DF11D06E081005C78A5 /* FFKValidatorError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKValidatorError.m; sourceTree = "<group>"; };
 		13B35DF21D06E081005C78A5 /* FFKFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKFormatter.h; sourceTree = "<group>"; };
 		13B35DF31D06E081005C78A5 /* FFKFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKFormatter.m; sourceTree = "<group>"; };
-		13B35DF41D06E081005C78A5 /* FFKTextAutocompleterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKTextAutocompleterProtocol.h; sourceTree = "<group>"; };
 		13B35DFE1D06E091005C78A5 /* FFKBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKBarButtonItem.h; sourceTree = "<group>"; };
 		13B35DFF1D06E091005C78A5 /* FFKBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKBarButtonItem.m; sourceTree = "<group>"; };
 		13B35E001D06E091005C78A5 /* NSTimer+FFKUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+FFKUtils.h"; sourceTree = "<group>"; };
@@ -113,8 +113,10 @@
 		13B35E021D06E091005C78A5 /* UINavigationController+Keyboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+Keyboard.h"; sourceTree = "<group>"; };
 		13B35E031D06E091005C78A5 /* UINavigationController+Keyboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+Keyboard.m"; sourceTree = "<group>"; };
 		13B35E5F1D06E6E8005C78A5 /* TableKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TableKit.xcodeproj; path = ../TableKit/TableKit.xcodeproj; sourceTree = "<group>"; };
-		13F04F661D08592300063EB3 /* FFKFuzzyMatchAutocompleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKFuzzyMatchAutocompleter.h; sourceTree = "<group>"; };
-		13F04F671D08592300063EB3 /* FFKFuzzyMatchAutocompleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKFuzzyMatchAutocompleter.m; sourceTree = "<group>"; };
+		13F04F6F1D08A25D00063EB3 /* FFKTextAutocompleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKTextAutocompleter.h; sourceTree = "<group>"; };
+		13F04F701D08A25D00063EB3 /* FFKTextAutocompleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKTextAutocompleter.m; sourceTree = "<group>"; };
+		13F04F751D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKFuzzyMatchTextAutocompleter.h; sourceTree = "<group>"; };
+		13F04F761D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKFuzzyMatchTextAutocompleter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,35 +194,34 @@
 		13B35DDA1D06E00B005C78A5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				13B35DE31D06E029005C78A5 /* Base */,
-				13B35DE41D06E02E005C78A5 /* Inputs */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
-		13B35DE31D06E029005C78A5 /* Base */ = {
-			isa = PBXGroup;
-			children = (
 				13B35DCE1D06E008005C78A5 /* FFKForm.h */,
 				13B35DCF1D06E008005C78A5 /* FFKForm.m */,
 				13B35DD01D06E008005C78A5 /* FFKFieldset.h */,
 				13B35DD11D06E008005C78A5 /* FFKFieldset.m */,
-				13B35DD21D06E008005C78A5 /* FFKInput.h */,
-				13B35DD31D06E008005C78A5 /* FFKInput.m */,
+				13F04F7A1D08AF9500063EB3 /* Autocompletion */,
+				13F04F791D08AF8600063EB3 /* Formatting */,
+				13B35DE41D06E02E005C78A5 /* Inputs */,
+				13B35DE31D06E029005C78A5 /* Validation */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		13B35DE31D06E029005C78A5 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
 				13B35DEE1D06E081005C78A5 /* FFKValidator.h */,
 				13B35DEF1D06E081005C78A5 /* FFKValidator.m */,
 				13B35DF01D06E081005C78A5 /* FFKValidatorError.h */,
 				13B35DF11D06E081005C78A5 /* FFKValidatorError.m */,
-				13B35DF21D06E081005C78A5 /* FFKFormatter.h */,
-				13B35DF31D06E081005C78A5 /* FFKFormatter.m */,
-				13F04F6C1D08592900063EB3 /* Autocompleters */,
 			);
-			name = Base;
+			name = Validation;
 			sourceTree = "<group>";
 		};
 		13B35DE41D06E02E005C78A5 /* Inputs */ = {
 			isa = PBXGroup;
 			children = (
+				13B35DD21D06E008005C78A5 /* FFKInput.h */,
+				13B35DD31D06E008005C78A5 /* FFKInput.m */,
 				13B35DDB1D06E021005C78A5 /* FFKTextInput.h */,
 				13B35DDC1D06E021005C78A5 /* FFKTextInput.m */,
 				13B35DDD1D06E021005C78A5 /* FFKCheckboxInput.h */,
@@ -264,14 +265,24 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13F04F6C1D08592900063EB3 /* Autocompleters */ = {
+		13F04F791D08AF8600063EB3 /* Formatting */ = {
 			isa = PBXGroup;
 			children = (
-				13B35DF41D06E081005C78A5 /* FFKTextAutocompleterProtocol.h */,
-				13F04F661D08592300063EB3 /* FFKFuzzyMatchAutocompleter.h */,
-				13F04F671D08592300063EB3 /* FFKFuzzyMatchAutocompleter.m */,
+				13B35DF21D06E081005C78A5 /* FFKFormatter.h */,
+				13B35DF31D06E081005C78A5 /* FFKFormatter.m */,
 			);
-			name = Autocompleters;
+			name = Formatting;
+			sourceTree = "<group>";
+		};
+		13F04F7A1D08AF9500063EB3 /* Autocompletion */ = {
+			isa = PBXGroup;
+			children = (
+				13F04F6F1D08A25D00063EB3 /* FFKTextAutocompleter.h */,
+				13F04F701D08A25D00063EB3 /* FFKTextAutocompleter.m */,
+				13F04F751D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h */,
+				13F04F761D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m */,
+			);
+			name = Autocompletion;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -294,10 +305,10 @@
 				13B35DF61D06E081005C78A5 /* FFKValidator.h in Headers */,
 				13B35DF81D06E081005C78A5 /* FFKValidatorError.h in Headers */,
 				13B35DD61D06E008005C78A5 /* FFKFieldset.h in Headers */,
-				13B35DFC1D06E081005C78A5 /* FFKTextAutocompleterProtocol.h in Headers */,
 				13B35E061D06E091005C78A5 /* NSTimer+FFKUtils.h in Headers */,
-				13F04F681D08592300063EB3 /* FFKFuzzyMatchAutocompleter.h in Headers */,
 				138BD9351D06ECAA00983975 /* FFKFeatureTableViewCell.h in Headers */,
+				13F04F771D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h in Headers */,
+				13F04F711D08A25D00063EB3 /* FFKTextAutocompleter.h in Headers */,
 				13B35DE11D06E021005C78A5 /* FFKCheckboxInput.h in Headers */,
 				13B35DDF1D06E021005C78A5 /* FFKTextInput.h in Headers */,
 			);
@@ -422,19 +433,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13F04F781D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m in Sources */,
 				13B35DF71D06E081005C78A5 /* FFKValidator.m in Sources */,
 				13B35DD91D06E008005C78A5 /* FFKInput.m in Sources */,
 				13B35E071D06E091005C78A5 /* NSTimer+FFKUtils.m in Sources */,
 				13B35E051D06E091005C78A5 /* FFKBarButtonItem.m in Sources */,
 				13B35DE01D06E021005C78A5 /* FFKTextInput.m in Sources */,
 				13B35DCD1D06DFED005C78A5 /* FFKPagedFormViewController.m in Sources */,
-				13F04F691D08592300063EB3 /* FFKFuzzyMatchAutocompleter.m in Sources */,
 				13B35DFB1D06E081005C78A5 /* FFKFormatter.m in Sources */,
 				13B35DE21D06E021005C78A5 /* FFKCheckboxInput.m in Sources */,
 				13B35DEA1D06E04F005C78A5 /* FFKInputTableViewCell.m in Sources */,
 				13B35DCB1D06DFED005C78A5 /* FFKFormViewController.m in Sources */,
 				13B35DF91D06E081005C78A5 /* FFKValidatorError.m in Sources */,
 				13B35DD51D06E008005C78A5 /* FFKForm.m in Sources */,
+				13F04F721D08A25D00063EB3 /* FFKTextAutocompleter.m in Sources */,
 				13B35DEC1D06E04F005C78A5 /* FFKTextInputTableViewCell.m in Sources */,
 				13B35E091D06E091005C78A5 /* UINavigationController+Keyboard.m in Sources */,
 				13B35DD71D06E008005C78A5 /* FFKFieldset.m in Sources */,
