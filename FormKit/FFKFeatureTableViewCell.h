@@ -6,8 +6,8 @@
 //  Copyright © 2016 Founders Factory. All rights reserved.
 //
 
-#import <TableKit/FFKSubtitleTableViewCell.h>
+#import <FormKit/FFKInputTableViewCell.h>
 
-@interface FFKFeatureTableViewCell : FFKSubtitleTableViewCell
+@interface FFKFeatureTableViewCell : FFKInputTableViewCell
 
 @end

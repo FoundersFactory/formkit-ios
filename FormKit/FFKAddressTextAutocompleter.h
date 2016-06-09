@@ -10,4 +10,8 @@
 
 @interface FFKAddressTextAutocompleter : FFKTextAutocompleter
 
+@property (nonatomic, strong) NSString *regionString;
+
++ (instancetype)addressTextAutocompleterWithRegionString:(NSString *)regionString;
+
 @end

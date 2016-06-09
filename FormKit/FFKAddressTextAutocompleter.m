@@ -24,11 +24,23 @@
     return self;
 }
 
++ (instancetype)addressTextAutocompleterWithRegionString:(NSString *)regionString;
+{
+    FFKAddressTextAutocompleter *autocompleter = [FFKAddressTextAutocompleter new];
+    autocompleter.regionString = regionString;
+    
+    return autocompleter;
+}
+
 - (void)setString:(NSString *)string
 {
     MKLocalSearchRequest *searchRequest = [MKLocalSearchRequest new];
-    searchRequest.naturalLanguageQuery = string;
-    searchRequest.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(51.515313, -0.126323), MKCoordinateSpanMake(0.05, 0.05));
+    
+    if (self.regionString) {
+        searchRequest.naturalLanguageQuery = [string stringByAppendingFormat:@" %@", self.regionString];
+    } else {
+        searchRequest.naturalLanguageQuery = string;
+    }
     
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:searchRequest];
     [search startWithCompletionHandler:^(MKLocalSearchResponse * _Nullable response, NSError * _Nullable error) {
@@ -53,7 +65,6 @@
 - (FFKInput *)additionalInputForSelectedInput:(FFKMapInput *)selectedInput
 {
     FFKMapInput *mapInput = [FFKMapInput new];
-    NSLog(@"MAP ITEM: %@", selectedInput.context);
     mapInput.annotations = @[selectedInput.context];
     
     return mapInput;

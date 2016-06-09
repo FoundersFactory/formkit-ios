@@ -79,11 +79,10 @@
  */
 @property (nonatomic, strong) id context;
 
-
 /**
- Configure the view of the input. Subclass this.
+ Whether the input is a suggestion from an autocompleter.
  */
-//- (void)configureView:(FFKInputTableViewCell *)view;
+@property (nonatomic, assign, getter=isSuggestion) BOOL suggestion;
 
 + (instancetype)inputWithConfigurationHandler:(void (^)(FFKInput *input))handler;
 - (void)validate;

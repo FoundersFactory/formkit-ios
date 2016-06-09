@@ -94,6 +94,7 @@
     FFKTextAutocompleter *textAutocompleter = textInput.textAutocompleter;
 
     self.input.value = sender.text;
+    self.input.suggestion = NO;
     
     if (formatter) {
         sender.text = formatter.formatHandler(formatter, sender.text);
@@ -121,7 +122,7 @@
 {
     self.typingTimer = nil;
     self.isTimerDirty = NO;
-    NSLog(@"UPDATING.......");
+
     FFKTextInput *textInput = (FFKTextInput *)self.input;
     FFKTextAutocompleter *textAutocompleter = textInput.textAutocompleter;
     textAutocompleter.string = self.textField.text;

@@ -51,10 +51,10 @@
     
     _tableController = [[FFKTableController alloc] initWithTableView:self.tableView];
     
-    _advancementBarButtonItem = [[FFKBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(handleAdvancement:)];
+    _advancementBarButtonItem = [[FFKBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStyleDone target:self action:@selector(handleAdvancement:)];
     self.navigationItem.rightBarButtonItem = self.advancementBarButtonItem;
     
-    _advancementLongBarButtonItem = [[FFKBarButtonItem alloc] initWithTitle:@"Next" style:UIBarButtonItemStyleDone target:self action:@selector(handleAdvancement:)];
+    _advancementLongBarButtonItem = [[FFKBarButtonItem alloc] initWithTitle:@"Continue" style:UIBarButtonItemStyleDone target:self action:@selector(handleAdvancement:)];
     
     UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     
@@ -190,11 +190,6 @@
     }];
     
     
-    
-    
-    
-
-
     NSMutableArray *sections = [NSMutableArray new];
     
     [sections addObject:headerSection];
@@ -215,13 +210,13 @@
                 
                 autocompleterSection.rows = [self rowsWithInputs:suggestedInputs];
 
-                
                 for (FFKTableRow *row in autocompleterSection.rows) {
                     
                     [row setInteractionHandler:^(FFKTableInteraction *interaction) {
                     
                         // Set value to selection
                         FFKInput *selectedInput = interaction.row.context;
+                        textInput.suggestion = YES;
                         textInput.value = selectedInput.value;
                         [self.tableView reloadRowsAtIndexPaths:@[textInput.row.indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
                         
@@ -239,7 +234,7 @@
                 }
                 
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+                [self.tableView scrollToRowAtIndexPath:textInput.row.indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
             }];
             
             [sections addObject:autocompleterSection];

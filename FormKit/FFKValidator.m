@@ -69,4 +69,12 @@
     return nil;
 }
 
++ (instancetype)suggestionValidatorWithMessage:(NSString *)message
+{
+    return [FFKValidator validatorWithHandler:^BOOL(FFKValidator *validator, FFKInput *input, FFKValidatorError *__autoreleasing *error) {
+        *error = [FFKValidatorError validatorErrorWithInput:input localizedDescription:message recoverySuggestion:nil];
+        return input.isSuggestion;
+    }];
+}
+
 @end
