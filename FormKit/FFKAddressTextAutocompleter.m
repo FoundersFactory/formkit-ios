@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 #import <AddressBookUI/AddressBookUI.h>
+#import "FormKit.h"
 
 @implementation FFKAddressTextAutocompleter
 
@@ -27,7 +28,7 @@
 {
     MKLocalSearchRequest *searchRequest = [MKLocalSearchRequest new];
     searchRequest.naturalLanguageQuery = string;
-    searchRequest.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(51.515313, -0.126323), MKCoordinateSpanMake(0.1, 0.1));
+    searchRequest.region = MKCoordinateRegionMake(CLLocationCoordinate2DMake(51.515313, -0.126323), MKCoordinateSpanMake(0.05, 0.05));
     
     MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:searchRequest];
     [search startWithCompletionHandler:^(MKLocalSearchResponse * _Nullable response, NSError * _Nullable error) {
@@ -41,26 +42,21 @@
                 input.titleText = mapItem.name;
                 input.detailText = [[addressString stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@\n",mapItem.name] withString:@""] stringByReplacingOccurrencesOfString:@"\n" withString:@", "];
                 input.value = addressString;
+                input.context = mapItem;
             }];
         }];
         
         self.results = inputs;
     }];
+}
 
-    /*
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF beginswith[c] %@", string];
-    NSArray *filteredStrings = [self.strings filteredArrayUsingPredicate:predicate];
+- (FFKInput *)additionalInputForSelectedInput:(FFKMapInput *)selectedInput
+{
+    FFKMapInput *mapInput = [FFKMapInput new];
+    NSLog(@"MAP ITEM: %@", selectedInput.context);
+    mapInput.annotations = @[selectedInput.context];
     
-    NSArray *inputs = [filteredStrings mapObjectsUsingBlock:^id(id object, NSInteger idx) {
-        return [FFKInput inputWithConfigurationHandler:^(FFKInput *input) {
-            input.titleText = object;
-            input.detailText = @"London";
-            input.value = object;
-        }];
-    }];
-    
-    self.results = inputs;
-     */
+    return mapInput;
 }
 
 @end

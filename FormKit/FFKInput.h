@@ -74,6 +74,11 @@
 
 @property (nonatomic, weak) FFKTableRow *row;
 
+/**
+ Store additional objects against the input.
+ */
+@property (nonatomic, strong) id context;
+
 
 /**
  Configure the view of the input. Subclass this.

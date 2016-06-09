@@ -128,6 +128,10 @@
                 row.height = 60;
             }
             
+            if ([input isKindOfClass:[FFKMapInput class]]) {
+                row.height = self.view.bounds.size.height / 3;
+            }
+            
             [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
                 cell.input = input;
                 cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
@@ -235,7 +239,7 @@
                 }
                 
                 [self.tableView reloadSections:[NSIndexSet indexSetWithIndex:2] withRowAnimation:UITableViewRowAnimationAutomatic];
-                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1] atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
             }];
             
             [sections addObject:autocompleterSection];
@@ -252,8 +256,6 @@
     if (!self.fieldset) {
         return;
     }
-    
-    NSLog(@"Focus input %@", input);
     
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:input.row.indexPath];
     [cell focus];

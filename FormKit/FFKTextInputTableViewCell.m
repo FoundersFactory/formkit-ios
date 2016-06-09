@@ -12,6 +12,7 @@
 @interface FFKTextInputTableViewCell ()
 
 @property (nonatomic, strong) NSTimer *typingTimer;
+@property (nonatomic, assign) BOOL isTimerDirty;
 
 @end
 
@@ -65,8 +66,6 @@
     self.textField.keyboardType = input.keyboardType;
     self.textField.autocorrectionType = input.autocorrectionType;
     self.textField.autocapitalizationType = input.autocapitalizationType;
-    
-    NSLog(@"Configuring cell with input: %@ %@", input, input.value);
 }
 
 
@@ -81,7 +80,6 @@
 {
     [self.textField resignFirstResponder];
     self.textField.userInteractionEnabled = NO;
-//    self.input.value = self.textField.text;
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -105,20 +103,25 @@
         
         if (textAutocompleter.deferCompletingUntillTypingHasFinished) {
             
-            if (self.typingTimer) {
-                [self.typingTimer invalidate];
+            if (self.isTimerDirty && !self.typingTimer) {
+                self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(handleTypingTimer:) userInfo:nil repeats:NO];
             }
             
-            self.typingTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(handleTypingTimer:) userInfo:nil repeats:NO];
+            self.isTimerDirty = YES;
+            
             
         } else {
             textAutocompleter.string = sender.text;
+            
         }
     }
 }
 
 - (void)handleTypingTimer:(NSTimer *)sender
 {
+    self.typingTimer = nil;
+    self.isTimerDirty = NO;
+    NSLog(@"UPDATING.......");
     FFKTextInput *textInput = (FFKTextInput *)self.input;
     FFKTextAutocompleter *textAutocompleter = textInput.textAutocompleter;
     textAutocompleter.string = self.textField.text;
