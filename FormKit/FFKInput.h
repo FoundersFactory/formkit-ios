@@ -75,9 +75,14 @@
 @property (nonatomic, weak) FFKTableRow *row;
 
 /**
- Configure the view of the input. Subclass this.
+ Store additional objects against the input.
  */
-//- (void)configureView:(FFKInputTableViewCell *)view;
+@property (nonatomic, strong) id context;
+
+/**
+ Whether the input is a suggestion from an autocompleter.
+ */
+@property (nonatomic, assign, getter=isSuggestion) BOOL suggestion;
 
 + (instancetype)inputWithConfigurationHandler:(void (^)(FFKInput *input))handler;
 - (void)validate;

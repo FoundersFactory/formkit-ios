@@ -37,7 +37,7 @@
     self.textLabel.frame = CGRectMake(self.bounds.size.width / 2 - labelSize.width / 2, self.imageView.frame.size.height, labelSize.width, labelSize.height);
     
     CGSize detailLabelSize = [self.detailTextLabel sizeThatFits:CGSizeMake(self.bounds.size.width - 30, MAXFLOAT)];
-    self.detailTextLabel.frame = CGRectMake(self.bounds.size.width / 2 - detailLabelSize.width / 2, self.textLabel.frame.size.height + self.imageView.bounds.size.height, detailLabelSize.width, detailLabelSize.height);
+    self.detailTextLabel.frame = CGRectMake(self.bounds.size.width / 2 - detailLabelSize.width / 2, self.textLabel.frame.size.height + self.imageView.bounds.size.height + 5, detailLabelSize.width, detailLabelSize.height);
 }
 
 @end

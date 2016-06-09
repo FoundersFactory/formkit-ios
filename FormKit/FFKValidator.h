@@ -23,5 +23,6 @@ typedef BOOL (^FFKValidatorHandler)(FFKValidator *validator, FFKInput *input, FF
 + (instancetype)requiredValidator;
 + (instancetype)phoneNumberValidator;
 + (instancetype)fullNameValidator;
++ (instancetype)suggestionValidatorWithMessage:(NSString *)message;
 
 @end

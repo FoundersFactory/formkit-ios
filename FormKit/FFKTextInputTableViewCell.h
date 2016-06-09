@@ -8,6 +8,8 @@
 
 #import "FFKInputTableViewCell.h"
 
+@class FFKTextInput;
+
 @interface FFKTextInputTableViewCell : FFKInputTableViewCell <UITextFieldDelegate>
 
 @property (readonly, strong) UITextField *textField;

@@ -23,6 +23,11 @@ FOUNDATION_EXPORT const unsigned char FormKitVersionString[];
 #import <FormKit/FFKValidator.h>
 #import <FormKit/FFKValidatorError.h>
 #import <FormKit/FFKFormatter.h>
+#import <FormKit/FFKTextAutocompleter.h>
+#import <FormKit/FFKFuzzyMatchTextAutocompleter.h>
+#import <FormKit/FFKAddressTextAutocompleter.h>
+#import <FormKit/FFKMapInput.h>
+#import <FormKit/FFKMapInputTableViewCell.h>
 #import <FormKit/FFKFormViewController.h>
 #import <FormKit/FFKPagedFormViewController.h>
 #import <FormKit/FFKBarButtonItem.h>
