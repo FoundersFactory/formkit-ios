@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1384D6FA1D09758D00126B6D /* FFKAddressTextAutocompleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 1384D6F81D09758D00126B6D /* FFKAddressTextAutocompleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1384D6FB1D09758D00126B6D /* FFKAddressTextAutocompleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1384D6F91D09758D00126B6D /* FFKAddressTextAutocompleter.m */; };
+		1384D6FF1D0975C200126B6D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1384D6FE1D0975C200126B6D /* CoreLocation.framework */; };
+		1384D7011D0975C600126B6D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1384D7001D0975C600126B6D /* MapKit.framework */; };
+		1384D7031D097A4700126B6D /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1384D7021D097A4700126B6D /* AddressBookUI.framework */; };
 		138BD9351D06ECAA00983975 /* FFKFeatureTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 138BD9331D06ECAA00983975 /* FFKFeatureTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		138BD9361D06ECAA00983975 /* FFKFeatureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 138BD9341D06ECAA00983975 /* FFKFeatureTableViewCell.m */; };
 		13B35DAF1D06DFB0005C78A5 /* FormKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 13B35DAE1D06DFB0005C78A5 /* FormKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -74,6 +79,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1384D6F81D09758D00126B6D /* FFKAddressTextAutocompleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKAddressTextAutocompleter.h; sourceTree = "<group>"; };
+		1384D6F91D09758D00126B6D /* FFKAddressTextAutocompleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKAddressTextAutocompleter.m; sourceTree = "<group>"; };
+		1384D6FE1D0975C200126B6D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1384D7001D0975C600126B6D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1384D7021D097A4700126B6D /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		138BD9331D06ECAA00983975 /* FFKFeatureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKFeatureTableViewCell.h; sourceTree = "<group>"; };
 		138BD9341D06ECAA00983975 /* FFKFeatureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKFeatureTableViewCell.m; sourceTree = "<group>"; };
 		13B35DAB1D06DFB0005C78A5 /* FormKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FormKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +134,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1384D7031D097A4700126B6D /* AddressBookUI.framework in Frameworks */,
+				1384D7011D0975C600126B6D /* MapKit.framework in Frameworks */,
+				1384D6FF1D0975C200126B6D /* CoreLocation.framework in Frameworks */,
 				13B35E681D06E6F0005C78A5 /* TableKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +155,9 @@
 		13B35DA11D06DFB0005C78A5 = {
 			isa = PBXGroup;
 			children = (
+				1384D7021D097A4700126B6D /* AddressBookUI.framework */,
+				1384D7001D0975C600126B6D /* MapKit.framework */,
+				1384D6FE1D0975C200126B6D /* CoreLocation.framework */,
 				13B35E5F1D06E6E8005C78A5 /* TableKit.xcodeproj */,
 				13B35DAD1D06DFB0005C78A5 /* FormKit */,
 				13B35DB91D06DFB0005C78A5 /* FormKitTests */,
@@ -281,6 +297,8 @@
 				13F04F701D08A25D00063EB3 /* FFKTextAutocompleter.m */,
 				13F04F751D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h */,
 				13F04F761D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m */,
+				1384D6F81D09758D00126B6D /* FFKAddressTextAutocompleter.h */,
+				1384D6F91D09758D00126B6D /* FFKAddressTextAutocompleter.m */,
 			);
 			name = Autocompletion;
 			sourceTree = "<group>";
@@ -308,6 +326,7 @@
 				13B35E061D06E091005C78A5 /* NSTimer+FFKUtils.h in Headers */,
 				138BD9351D06ECAA00983975 /* FFKFeatureTableViewCell.h in Headers */,
 				13F04F771D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h in Headers */,
+				1384D6FA1D09758D00126B6D /* FFKAddressTextAutocompleter.h in Headers */,
 				13F04F711D08A25D00063EB3 /* FFKTextAutocompleter.h in Headers */,
 				13B35DE11D06E021005C78A5 /* FFKCheckboxInput.h in Headers */,
 				13B35DDF1D06E021005C78A5 /* FFKTextInput.h in Headers */,
@@ -433,6 +452,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1384D6FB1D09758D00126B6D /* FFKAddressTextAutocompleter.m in Sources */,
 				13F04F781D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m in Sources */,
 				13B35DF71D06E081005C78A5 /* FFKValidator.m in Sources */,
 				13B35DD91D06E008005C78A5 /* FFKInput.m in Sources */,
