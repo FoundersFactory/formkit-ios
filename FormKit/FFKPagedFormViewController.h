@@ -22,6 +22,7 @@
 @property (nonatomic, assign, getter=isPerformingTask) BOOL performingTask;
 @property (readonly, strong) FFKInput *focusedInput;
 @property (nonatomic, assign) BOOL focusInputOnViewDidAppear;
+@property (nonatomic, strong) UIColor *imageTintColor;
 
 - (instancetype)initWithForm:(FFKForm *)form fieldset:(FFKFieldset *)fieldset;
 

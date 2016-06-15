@@ -103,10 +103,10 @@
     [navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     [navigationBar setShadowImage:[UIImage new]];
     
-    UIToolbar *toolbar = self.navigationController.toolbar;
-    toolbar.barTintColor = [UIColor colorWithRed:1.00 green:0.59 blue:0.00 alpha:1.00];
-    [toolbar setShadowImage:[UIImage new] forToolbarPosition:UIBarPositionAny];
-    toolbar.tintColor = [UIColor whiteColor];
+//    UIToolbar *toolbar = self.navigationController.toolbar;
+//    toolbar.barTintColor = [UIColor colorWithRed:1.00 green:0.59 blue:0.00 alpha:1.00];
+//    [toolbar setShadowImage:[UIImage new] forToolbarPosition:UIBarPositionAny];
+//    toolbar.tintColor = [UIColor whiteColor];
 }
 
 #pragma mark - Form methods
@@ -176,6 +176,7 @@
         row.image = fieldset.image;
         [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
             cell.seperatorsHidden = YES;
+            cell.imageView.tintColor = self.imageTintColor;
         }];
     }];
     
@@ -358,6 +359,7 @@
             
             FFKPagedFormViewController *viewController = [[FFKPagedFormViewController alloc] initWithForm:self.form fieldset:fieldset];
             viewController.focusInputOnViewDidAppear = self.focusInputOnViewDidAppear;
+            viewController.imageTintColor = self.imageTintColor;
             [self.navigationController pushViewController:viewController animated:YES];
         };
         
