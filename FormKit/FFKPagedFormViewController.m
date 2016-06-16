@@ -244,6 +244,11 @@
     
     self.tableController.tableSections = sections;
     
+    if (!fieldset.isAdvanceable) {
+        self.advancementBarButtonItem.title = @"Done";
+        self.advancementLongBarButtonItem.title = @"Done";
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -376,6 +381,7 @@
             
             FFKFieldset *nextFieldset = self.form.fieldsets[nextIndex];
             FFKPagedFormViewController *viewController = [[FFKPagedFormViewController alloc] initWithForm:self.form fieldset:nextFieldset];
+            viewController.imageTintColor = self.imageTintColor;
             [self.navigationController pushViewController:viewController animated:YES];
             
         } else {

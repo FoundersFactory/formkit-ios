@@ -11,6 +11,15 @@
 
 @implementation FFKFieldset
 
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _advanceable = YES;
+    }
+    
+    return self;
+}
+
 + (instancetype)fieldsetWithConfigurationHandler:(FFKFieldsetConfigurationHandler)configurationHandler
 {
     FFKFieldset *fieldset = [FFKFieldset new];
@@ -30,5 +39,6 @@
     
     return NO;
 }
+
 
 @end

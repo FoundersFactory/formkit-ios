@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class FFKFieldset;
+@class FFKInput;
 
 @interface FFKForm : NSObject
 
@@ -21,5 +22,8 @@
  The fieldsets belonging to the form.
  */
 @property (nonatomic, strong) NSArray <FFKFieldset *> *fieldsets;
+
+- (NSArray <FFKInput *> *)inputsForName:(NSString *)name;
+- (FFKInput *)firstInputForName:(NSString *)name;
 
 @end
