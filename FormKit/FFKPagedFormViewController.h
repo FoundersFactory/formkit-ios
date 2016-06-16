@@ -12,9 +12,18 @@
 @class FFKTableController;
 @class FFKFieldset;
 
+@interface FFKPagedFormView : UITableView <UIAppearance>
+
+@property (nonatomic, strong) UILabel *headerLabelFont UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UILabel *headerLabelColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *headerImageTintColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *validationErrorColor UI_APPEARANCE_SELECTOR;
+
+@end
+
 @interface FFKPagedFormViewController : FFKFormViewController
 
-@property (readonly, strong) UITableView *tableView;
+@property (readonly, strong) FFKPagedFormView *tableView;
 @property (readonly, strong) FFKTableController *tableController;
 @property (readonly, strong) FFKBarButtonItem *advancementBarButtonItem;
 @property (readonly, strong) FFKBarButtonItem *advancementLongBarButtonItem;
@@ -22,7 +31,6 @@
 @property (nonatomic, assign, getter=isPerformingTask) BOOL performingTask;
 @property (readonly, strong) FFKInput *focusedInput;
 @property (nonatomic, assign) BOOL focusInputOnViewDidAppear;
-@property (nonatomic, strong) UIColor *imageTintColor;
 
 - (instancetype)initWithForm:(FFKForm *)form fieldset:(FFKFieldset *)fieldset;
 

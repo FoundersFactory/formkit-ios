@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) FFKInput *input;
 @property (readonly, strong) UILabel *accessoryLabel;
+@property (nonatomic, strong) UIColor *validationErrorColor;
 
 - (void)focus;
 - (void)defocus;

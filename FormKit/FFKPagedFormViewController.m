@@ -10,6 +10,22 @@
 #import "FormKit.h"
 #import <TableKit/TableKit.h>
 
+@implementation FFKPagedFormView
+
++ (void)initialize
+{
+    if (self == [FFKPagedFormView class]) {
+        
+        // Setup default styles
+        FFKPagedFormView *appearance = [FFKPagedFormView appearance];
+        appearance.headerLabelFont = [UIFont systemFontOfSize:36 weight:UIFontWeightLight];
+        appearance.headerLabelColor = [UIColor blackColor];
+        appearance.validationErrorColor = [UIColor redColor];
+    }
+}
+
+@end
+
 @interface FFKPagedFormViewController ()
 
 @property (nonatomic, strong) _FFKPagedFormFauxNavigationBar *fauxNavigationBar;
@@ -45,7 +61,7 @@
 {
     [super viewDidLoad];
     
-    _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
+    _tableView = [[FFKPagedFormView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.contentInset = UIEdgeInsetsMake(-34, 0, 0, 0);
     [self.view addSubview:self.tableView];
     
@@ -113,6 +129,8 @@
 
 - (NSArray <FFKTableRow *> *)rowsWithInputs:(NSArray <FFKInput *> *)inputs
 {
+    FFKPagedFormView *appearance = [FFKPagedFormView appearance];
+
     return [inputs mapObjectsUsingBlock:^id(FFKInput *input, NSInteger idx) {
         return [FFKTableRow tableRowWithConfigurationHandler:^(FFKTableRow *row) {
             
@@ -133,6 +151,7 @@
             }
             
             [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
+                cell.validationErrorColor = appearance.validationErrorColor;
                 cell.input = input;
                 cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
             }];
@@ -169,6 +188,8 @@
 {
     _fieldset = fieldset;
     
+    FFKPagedFormView *appearance = [FFKPagedFormView appearance];
+    
     FFKTableRow *headerRow = [FFKTableRow tableRowWithConfigurationHandler:^(FFKTableRow *row) {
         row.text = fieldset.titleText;
         row.detailText = fieldset.detailText;
@@ -176,7 +197,12 @@
         row.image = fieldset.image;
         [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
             cell.seperatorsHidden = YES;
-            cell.imageView.tintColor = self.imageTintColor;
+            cell.imageView.tintColor = appearance.headerImageTintColor;
+            cell.textLabel.font = appearance.headerLabelFont;
+            cell.textLabel.textColor = appearance.headerLabelColor;
+            cell.validationErrorColor = appearance.validationErrorColor;
+//            cell.textLabel.font = self.headerTitleLabelFont;
+//            cell.textLabel.textColor = self.headerTitleLabelColor;
         }];
     }];
     
@@ -364,7 +390,6 @@
             
             FFKPagedFormViewController *viewController = [[FFKPagedFormViewController alloc] initWithForm:self.form fieldset:fieldset];
             viewController.focusInputOnViewDidAppear = self.focusInputOnViewDidAppear;
-            viewController.imageTintColor = self.imageTintColor;
             [self.navigationController pushViewController:viewController animated:YES];
         };
         
@@ -381,7 +406,6 @@
             
             FFKFieldset *nextFieldset = self.form.fieldsets[nextIndex];
             FFKPagedFormViewController *viewController = [[FFKPagedFormViewController alloc] initWithForm:self.form fieldset:nextFieldset];
-            viewController.imageTintColor = self.imageTintColor;
             [self.navigationController pushViewController:viewController animated:YES];
             
         } else {

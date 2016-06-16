@@ -33,7 +33,7 @@
 - (void)setValidatorErrorStyleEnabled:(BOOL)enabled
 {
     if (enabled) {
-        self.textLabel.textColor = [UIColor redColor];
+        self.textLabel.textColor = self.validationErrorColor;
         self.accessoryType = UITableViewCellAccessoryDetailButton;
         
         CAKeyframeAnimation *animation = [ CAKeyframeAnimation animationWithKeyPath:@"transform" ] ;
