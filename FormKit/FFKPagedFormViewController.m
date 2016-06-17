@@ -141,13 +141,13 @@
             input.row = row;
             
             if (input.isCheckable) {
-                row.height = 80;
+                row.minHeight = 80;
             } else {
-                row.height = 60;
+                row.layoutMargins = UIEdgeInsetsMake(10, 0, 10, 0);
             }
             
             if ([input isKindOfClass:[FFKMapInput class]]) {
-                row.height = self.view.bounds.size.height / 3;
+                row.minHeight = self.view.bounds.size.height / 3;
             }
             
             [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
