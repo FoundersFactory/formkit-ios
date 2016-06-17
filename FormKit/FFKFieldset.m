@@ -15,6 +15,7 @@
 {
     if (self = [super init]) {
         _advanceable = YES;
+        _reversable = YES;
     }
     
     return self;

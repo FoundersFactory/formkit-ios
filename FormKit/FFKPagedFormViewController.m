@@ -275,6 +275,10 @@
         self.advancementLongBarButtonItem.title = @"Done";
     }
     
+    if (!fieldset.isReversable) {
+        self.navigationItem.hidesBackButton = YES;
+    }
+    
     [self.tableView reloadData];
 }
 
@@ -409,7 +413,9 @@
             [self.navigationController pushViewController:viewController animated:YES];
             
         } else {
-            NSLog(@"---- End of form. Do something here");
+//            NSLog(@"---- End of form. Do something here");
+            // Will maybe add handler here but for now let's just dismiss
+            [self dismissViewControllerAnimated:YES completion:nil];
         }
         
     }

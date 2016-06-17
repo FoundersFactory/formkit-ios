@@ -63,6 +63,7 @@ typedef void (^FFKFieldsetConfigurationHandler)(FFKFieldset *fieldset);
 
 @property (readonly, assign) BOOL inputsContainValidatorErrors;
 @property (nonatomic, assign, getter=isAdvanceable) BOOL advanceable;
+@property (nonatomic, assign, getter=isReversable) BOOL reversable;
 
 /**
  Creates a new instance of a fieldset, with a configuration handler to set properties
