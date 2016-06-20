@@ -312,11 +312,19 @@
     NSIndexPath *inputIndexPath = input.row.indexPath;
     FFKInputTableViewCell *cell = [self.tableView cellForRowAtIndexPath:inputIndexPath];
     
-    if ([input.value isEqualToNumber:@(1)]) {
-        [cell uncheck];
-    } else {
+    if (!input.isChecked) {
         [cell check];
+        input.checked = YES;
+    } else {
+        [cell uncheck];
+        input.checked = NO;
     }
+    
+//    if ([input.value isEqualToNumber:@(1)]) {
+//        [cell uncheck];
+//    } else {
+//        [cell check];
+//    }
 }
 
 - (FFKInput *)nextInput

@@ -25,5 +25,7 @@
 
 - (NSArray <FFKInput *> *)inputsForName:(NSString *)name;
 - (FFKInput *)firstInputForName:(NSString *)name;
+- (NSDictionary *)valuesDictionary;
+- (NSDictionary *)valuesForFieldset:(FFKFieldset *)fieldset;
 
 @end

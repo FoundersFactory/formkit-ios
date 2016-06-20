@@ -67,13 +67,13 @@
         [self setValidatorErrorStyleEnabled:NO];
     }
     
-    if (input.isCheckable) {
-        if ([input.value isEqualToNumber:@(1)]) {
-            [self check];
-        } else {
-            [self uncheck];
-        }
-    }
+//    if (input.isCheckable) {
+//        if ([input.value isEqualToNumber:@(1)]) {
+//            [self check];
+//        } else {
+//            [self uncheck];
+//        }
+//    }
     
     [self willChangeValueForKey:@"input"];
 }
@@ -91,13 +91,15 @@
 - (void)check
 {
     self.accessoryType = UITableViewCellAccessoryCheckmark;
-    self.input.value = @(1);
+//    self.input.value = @(1);
+    self.input.checked = YES;
 }
 
 - (void)uncheck
 {
     self.accessoryType = UITableViewCellAccessoryNone;
-    self.input.value = nil;
+//    self.input.value = nil;
+    self.input.checked = NO;
 }
 
 @end

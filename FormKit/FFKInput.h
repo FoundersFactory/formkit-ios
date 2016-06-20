@@ -47,9 +47,11 @@
 @property (nonatomic, strong) UIImage *image;
 
 /**
- Whether the entire input is checkable or not. If YES -- and the user taps the input -- a checkmark accessory will be placed beside it, and its value set to YES.
+ Whether the entire input is checkable or not. If YES -- and the user taps the input -- a checkmark accessory will be placed beside it.
  */
 @property (nonatomic, assign, getter = isCheckable) BOOL checkable;
+
+@property (nonatomic, assign, getter=isChecked) BOOL checked;
 
 /**
  Whether the input is disabled.
