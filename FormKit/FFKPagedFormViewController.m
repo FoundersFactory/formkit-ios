@@ -150,6 +150,10 @@
                 row.minHeight = self.view.bounds.size.height / 3;
             }
             
+            if (input.image && !input.titleText && !input.detailText) {
+                row.minHeight = input.image.size.height;
+            }
+            
             [row setCellConfigurationHandler:^(FFKTableRow *row, FFKInputTableViewCell *cell) {
                 cell.validationErrorColor = appearance.validationErrorColor;
                 cell.input = input;
