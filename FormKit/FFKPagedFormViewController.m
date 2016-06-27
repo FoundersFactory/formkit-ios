@@ -191,9 +191,9 @@
 - (void)presentFieldset:(FFKFieldset *)fieldset
 {
     _fieldset = fieldset;
-    
-    if ([self.form.delegate respondsToSelector:@selector(form:willPresentFieldset:)] && fieldset) {
-        [self.form.delegate form:self.form willPresentFieldset:fieldset];
+
+    if ([self.form.delegate respondsToSelector:@selector(form:willPresentFieldsets:)] && fieldset) {
+        [self.form.delegate form:self.form willPresentFieldsets:@[fieldset]];
     }
     
     FFKPagedFormView *appearance = [FFKPagedFormView appearance];

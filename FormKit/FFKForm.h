@@ -14,7 +14,7 @@
 
 @protocol FFKFormDelegate <NSObject>
 
-- (void)form:(FFKForm *)form willPresentFieldset:(NSArray <FFKFieldset *> *)fieldsets;
+- (void)form:(FFKForm *)form willPresentFieldsets:(NSArray <FFKFieldset *> *)fieldsets;
 
 @end
 
