@@ -10,6 +10,13 @@
 
 @class FFKFieldset;
 @class FFKInput;
+@class FFKForm;
+
+@protocol FFKFormDelegate <NSObject>
+
+- (void)form:(FFKForm *)form willPresentFieldset:(NSArray <FFKFieldset *> *)fieldsets;
+
+@end
 
 @interface FFKForm : NSObject
 
@@ -22,6 +29,8 @@
  The fieldsets belonging to the form.
  */
 @property (nonatomic, strong) NSArray <FFKFieldset *> *fieldsets;
+
+@property (nonatomic, weak) id <FFKFormDelegate> delegate;
 
 - (NSArray <FFKInput *> *)inputsForName:(NSString *)name;
 - (FFKInput *)firstInputForName:(NSString *)name;

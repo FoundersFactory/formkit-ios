@@ -192,6 +192,10 @@
 {
     _fieldset = fieldset;
     
+    if ([self.form.delegate respondsToSelector:@selector(form:willPresentFieldset:)] && fieldset) {
+        [self.form.delegate form:self.form willPresentFieldset:fieldset];
+    }
+    
     FFKPagedFormView *appearance = [FFKPagedFormView appearance];
     
     FFKTableRow *headerRow = [FFKTableRow tableRowWithConfigurationHandler:^(FFKTableRow *row) {
