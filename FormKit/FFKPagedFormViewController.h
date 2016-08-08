@@ -15,7 +15,7 @@
 @interface FFKPagedFormView : UITableView <UIAppearance>
 
 @property (nonatomic, strong) UIFont *headerLabelFont UI_APPEARANCE_SELECTOR;
-@property (nonatomic, strong) UILabel *headerLabelColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor *headerLabelColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *headerImageTintColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor *validationErrorColor UI_APPEARANCE_SELECTOR;
 

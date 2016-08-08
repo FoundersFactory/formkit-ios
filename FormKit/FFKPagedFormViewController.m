@@ -158,6 +158,7 @@
                 cell.validationErrorColor = appearance.validationErrorColor;
                 cell.input = input;
                 cell.textLabel.font = [UIFont systemFontOfSize:18 weight:UIFontWeightMedium];
+                if (input.cellConfigurationHandler) input.cellConfigurationHandler(row, cell);
             }];
             
             [row setInteractionHandler:^(FFKTableInteraction *interaction) {
@@ -174,6 +175,8 @@
                 }
                 
                 [self.tableView deselectRowAtIndexPath:interaction.indexPath animated:YES];
+                
+                if (input.interactionHandler) input.interactionHandler(interaction);
                 
                 // If the detail button is pressed, it has a validation warnng...
                 if (interaction.type == FFKTableInteractionTypeSecondary) {
@@ -233,7 +236,7 @@
     if ([fieldset.inputs.firstObject isKindOfClass:[FFKTextInput class]]) {
         
         // Hacky for now, but let's assume we can only have one autocompleter on a page
-        FFKTextInput *textInput = (FFKTextInput *)[fieldset.inputs firstObject];
+        __weak FFKTextInput *textInput = (FFKTextInput *)[fieldset.inputs firstObject];
         
         if (textInput.textAutocompleter) {
             

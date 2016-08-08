@@ -13,6 +13,7 @@
 @class FFKInputTableViewCell;
 @class FFKTableRow;
 @class FFKFormatter;
+@class FFKTableInteraction;
 
 @interface FFKInput : NSObject
 
@@ -73,6 +74,16 @@
  The view class used to represent the input.
  */
 @property (nonatomic, strong) Class viewCellClass;
+
+/**
+ Fired if a user performs an interaction on the input.
+ */
+@property (nonatomic, strong) void (^interactionHandler)(FFKTableInteraction *interaction);
+
+/**
+ Used to configure properties of the cell. This is called within cellForRowAtIndexPath.
+ */
+@property (nonatomic, strong) void (^cellConfigurationHandler)(FFKTableRow *row, id cell);
 
 @property (nonatomic, weak) FFKTableRow *row;
 
