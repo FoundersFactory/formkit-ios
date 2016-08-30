@@ -98,6 +98,7 @@
     
     if (formatter) {
         sender.text = formatter.formatHandler(formatter, sender.text);
+        self.input.value = sender.text;
     }
     
     if (textAutocompleter) {
