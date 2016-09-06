@@ -75,7 +75,7 @@
 //        }
 //    }
     
-    [self willChangeValueForKey:@"input"];
+    [self didChangeValueForKey:@"input"];
 }
 
 - (void)focus

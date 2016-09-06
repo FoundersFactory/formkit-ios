@@ -28,6 +28,8 @@ FOUNDATION_EXPORT const unsigned char FormKitVersionString[];
 #import <FormKit/FFKAddressTextAutocompleter.h>
 #import <FormKit/FFKMapInput.h>
 #import <FormKit/FFKMapInputTableViewCell.h>
+#import <FormKit/FFKStaticImageInput.h>
+#import <FormKit/FFKImageTableViewCell.h>
 #import <FormKit/FFKFormViewController.h>
 #import <FormKit/FFKPagedFormViewController.h>
 #import <FormKit/FFKBarButtonItem.h>

@@ -58,6 +58,10 @@
 		13F04F721D08A25D00063EB3 /* FFKTextAutocompleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F04F701D08A25D00063EB3 /* FFKTextAutocompleter.m */; };
 		13F04F771D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h in Headers */ = {isa = PBXBuildFile; fileRef = 13F04F751D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		13F04F781D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m in Sources */ = {isa = PBXBuildFile; fileRef = 13F04F761D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m */; };
+		A59A14351D7DD4BF0036D44A /* FFKImageTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = A59A14331D7DD4BF0036D44A /* FFKImageTableViewCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A59A14361D7DD4BF0036D44A /* FFKImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A14341D7DD4BF0036D44A /* FFKImageTableViewCell.m */; };
+		A59A143B1D7DD5100036D44A /* FFKStaticImageInput.h in Headers */ = {isa = PBXBuildFile; fileRef = A59A14391D7DD5100036D44A /* FFKStaticImageInput.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A59A143C1D7DD5100036D44A /* FFKStaticImageInput.m in Sources */ = {isa = PBXBuildFile; fileRef = A59A143A1D7DD5100036D44A /* FFKStaticImageInput.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +143,10 @@
 		13F04F701D08A25D00063EB3 /* FFKTextAutocompleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKTextAutocompleter.m; sourceTree = "<group>"; };
 		13F04F751D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKFuzzyMatchTextAutocompleter.h; sourceTree = "<group>"; };
 		13F04F761D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKFuzzyMatchTextAutocompleter.m; sourceTree = "<group>"; };
+		A59A14331D7DD4BF0036D44A /* FFKImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKImageTableViewCell.h; sourceTree = "<group>"; };
+		A59A14341D7DD4BF0036D44A /* FFKImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKImageTableViewCell.m; sourceTree = "<group>"; };
+		A59A14391D7DD5100036D44A /* FFKStaticImageInput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FFKStaticImageInput.h; sourceTree = "<group>"; };
+		A59A143A1D7DD5100036D44A /* FFKStaticImageInput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FFKStaticImageInput.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +264,8 @@
 				13B35DDE1D06E021005C78A5 /* FFKCheckboxInput.m */,
 				1381C4DC1D0982E100E1F121 /* FFKMapInput.h */,
 				1381C4DD1D0982E100E1F121 /* FFKMapInput.m */,
+				A59A14391D7DD5100036D44A /* FFKStaticImageInput.h */,
+				A59A143A1D7DD5100036D44A /* FFKStaticImageInput.m */,
 			);
 			name = Inputs;
 			sourceTree = "<group>";
@@ -271,6 +281,8 @@
 				138BD9341D06ECAA00983975 /* FFKFeatureTableViewCell.m */,
 				1381C4D61D0981A400E1F121 /* FFKMapInputTableViewCell.h */,
 				1381C4D71D0981A400E1F121 /* FFKMapInputTableViewCell.m */,
+				A59A14331D7DD4BF0036D44A /* FFKImageTableViewCell.h */,
+				A59A14341D7DD4BF0036D44A /* FFKImageTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -328,6 +340,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A59A143B1D7DD5100036D44A /* FFKStaticImageInput.h in Headers */,
 				13B35DFA1D06E081005C78A5 /* FFKFormatter.h in Headers */,
 				13B35E041D06E091005C78A5 /* FFKBarButtonItem.h in Headers */,
 				13B35DAF1D06DFB0005C78A5 /* FormKit.h in Headers */,
@@ -338,6 +351,7 @@
 				13B35DEB1D06E04F005C78A5 /* FFKTextInputTableViewCell.h in Headers */,
 				13B35DE91D06E04F005C78A5 /* FFKInputTableViewCell.h in Headers */,
 				13B35DCA1D06DFED005C78A5 /* FFKFormViewController.h in Headers */,
+				A59A14351D7DD4BF0036D44A /* FFKImageTableViewCell.h in Headers */,
 				13B35DF61D06E081005C78A5 /* FFKValidator.h in Headers */,
 				13B35DF81D06E081005C78A5 /* FFKValidatorError.h in Headers */,
 				13B35DD61D06E008005C78A5 /* FFKFieldset.h in Headers */,
@@ -476,6 +490,7 @@
 				1381C4E31D09886D00E1F121 /* MKMapItem+Annotation.m in Sources */,
 				1381C4DF1D0982E100E1F121 /* FFKMapInput.m in Sources */,
 				1384D6FB1D09758D00126B6D /* FFKAddressTextAutocompleter.m in Sources */,
+				A59A14361D7DD4BF0036D44A /* FFKImageTableViewCell.m in Sources */,
 				13F04F781D08AF6000063EB3 /* FFKFuzzyMatchTextAutocompleter.m in Sources */,
 				13B35DF71D06E081005C78A5 /* FFKValidator.m in Sources */,
 				13B35DD91D06E008005C78A5 /* FFKInput.m in Sources */,
@@ -490,6 +505,7 @@
 				13B35DCB1D06DFED005C78A5 /* FFKFormViewController.m in Sources */,
 				13B35DF91D06E081005C78A5 /* FFKValidatorError.m in Sources */,
 				13B35DD51D06E008005C78A5 /* FFKForm.m in Sources */,
+				A59A143C1D7DD5100036D44A /* FFKStaticImageInput.m in Sources */,
 				13F04F721D08A25D00063EB3 /* FFKTextAutocompleter.m in Sources */,
 				13B35DEC1D06E04F005C78A5 /* FFKTextInputTableViewCell.m in Sources */,
 				13B35E091D06E091005C78A5 /* UINavigationController+Keyboard.m in Sources */,

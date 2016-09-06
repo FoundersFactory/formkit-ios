@@ -11,6 +11,11 @@
 
 @implementation FFKMapInput
 
++ (instancetype)mapInput
+{
+    return [[self alloc] init];
+}
+
 - (instancetype)init
 {
     if (self = [super init]) {
@@ -19,4 +24,5 @@
     
     return self;
 }
+
 @end
